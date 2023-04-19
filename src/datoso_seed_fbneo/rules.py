@@ -1,21 +1,21 @@
-import datoso_seed_fbneo
+from datoso_seed_fbneo.dats import FbneoDat
 
 rules = [
     {
         'name': 'Fbneo Dat',
-        'class_name': datoso_seed_fbneo.dats.FbneoDat,
+        'class_name': FbneoDat,
         'seed': 'nointro',
         'priority': 50,
         'rules': [
             {
                 'key': 'url',
                 'operator': 'contains',
-                'value': 'www._fbneo.org'
+                'value': 'neo-source.com'
             },
             {
-                'key': 'homepage',
+                'key': 'author',
                 'operator': 'eq',
-                'value': '_fbneo'
+                'value': 'FinalBurn Neo'
             }
         ]
     }

@@ -26,10 +26,8 @@ class FbneoDat(XMLDatFile):
     def initial_parse(self) -> list:
         """ Parse the dat file. """
         # pylint: disable=R0801
-        # print(self.__dict__.keys())
         self.preffix = 'Arcade'
         self.company = 'FinalBurnNeo/roms'
-        # print(self.name)
         self.system = systems.get(self.name, 'unknown')
         self.suffix = ''
         self.date = ''
