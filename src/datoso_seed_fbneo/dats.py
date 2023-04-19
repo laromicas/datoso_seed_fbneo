@@ -1,5 +1,4 @@
-from datoso.configuration import config
-from datoso.repositories.dat import ClrMameProDatFile, XMLDatFile
+from datoso.repositories.dat import XMLDatFile
 
 systems = {
     'FinalBurn Neo - Arcade Games': 'arcade',
