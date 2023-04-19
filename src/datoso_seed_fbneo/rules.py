@@ -3,7 +3,7 @@ from datoso_seed_fbneo.dats import FbneoDat
 rules = [
     {
         'name': 'Fbneo Dat',
-        'class_name': FbneoDat,
+        '_class': FbneoDat,
         'seed': 'nointro',
         'priority': 50,
         'rules': [
