@@ -4,7 +4,7 @@ rules = [
     {
         'name': 'Fbneo Dat',
         '_class': FbneoDat,
-        'seed': 'nointro',
+        'seed': 'fbneo',
         'priority': 50,
         'rules': [
             {
