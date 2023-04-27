@@ -2,9 +2,9 @@
 __init__.py
 """
 __all__ = ["__version__", "__author__", "__description__"]
-__version__ = "0.0.1"
+__version__ = "0.2.0"
 __author__ = "Lacides Miranda"
-__description__ = "Datoso plugin for seed Final Burn Neo"
+__description__ = "Emulator for Arcade Games & Select Consoles."
 __preffix__ = "fbneo"
 
 from datoso.configuration import config
