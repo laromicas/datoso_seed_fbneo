@@ -6,13 +6,14 @@ import zipfile
 from datoso_seed_fbneo import __preffix__
 
 from datoso.configuration import config, logger
+from datoso.helpers import show_progress
 from datoso.configuration.folder_helper import Folders
 
 url = 'https://github.com/libretro/FBNeo/archive/refs/heads/master.zip'
 
 def download(folders):
     logger.info(f'Downloading {url} to {folders.download}\n')
-    urllib.request.urlretrieve(url, os.path.join(folders.download, 'fbneo.zip'))
+    urllib.request.urlretrieve(url, os.path.join(folders.download, 'fbneo.zip'), reporthook=show_progress)
     logger.info(f'Extracting dats from {folders.download}\n')
 
 def extract_dats(folders, full=False, light=False):
