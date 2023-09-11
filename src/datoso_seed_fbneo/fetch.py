@@ -1,19 +1,18 @@
 import os
 from datetime import datetime
 from pathlib import Path
-import urllib.request
 import zipfile
 from datoso_seed_fbneo import __preffix__
 
 from datoso.configuration import config, logger
-from datoso.helpers import show_progress
+from datoso.helpers import show_progress, downloader
 from datoso.configuration.folder_helper import Folders
 
 url = 'https://github.com/libretro/FBNeo/archive/refs/heads/master.zip'
 
 def download(folders):
     logger.info(f'Downloading {url} to {folders.download}\n')
-    urllib.request.urlretrieve(url, os.path.join(folders.download, 'fbneo.zip'), reporthook=show_progress)
+    downloader(url=url, destination=os.path.join(folders.download, 'fbneo.zip'), reporthook=show_progress)
     logger.info(f'Extracting dats from {folders.download}\n')
 
 def extract_dats(folders, full=False, light=False):
@@ -45,7 +44,8 @@ def backup(folders):
 
 def clean(folders):
     logger.info(f'Cleaning {folders.download}\n')
-    os.remove(os.path.join(folders.download, 'fbneo.zip'))
+    if os.path.exists(os.path.join(folders.download, 'fbneo.zip')):
+        os.remove(os.path.join(folders.download, 'fbneo.zip'))
 
 def fetch():
     fetch_full = config['FBNEO'].getboolean('FetchFull', True)
