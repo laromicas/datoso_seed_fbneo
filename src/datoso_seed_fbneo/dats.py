@@ -9,7 +9,7 @@ systems = {
     'FinalBurn Neo - Master System Games': 'sms',
     'FinalBurn Neo - Megadrive Games': 'megadrive',
     'FinalBurn Neo - MSX 1 Games': 'msx',
-    'FinalBurn Neo - Neogeo Games': 'neogeo',
+    'FinalBurn Neo - Neo Geo Games': 'neogeo',
     'FinalBurn Neo - Neo Geo Pocket Games': 'ngp',
     'FinalBurn Neo - NES Games': 'nes',
     'FinalBurn Neo - PC-Engine Games': 'pce',
