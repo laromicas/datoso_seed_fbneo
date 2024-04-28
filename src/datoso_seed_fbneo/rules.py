@@ -10,15 +10,15 @@ rules = [
             {
                 'key': 'url',
                 'operator': 'contains',
-                'value': 'neo-source.com'
+                'value': 'neo-source.com',
             },
             {
                 'key': 'author',
                 'operator': 'eq',
-                'value': 'FinalBurn Neo'
-            }
-        ]
-    }
+                'value': 'FinalBurn Neo',
+            },
+        ],
+    },
 ]
 
 
