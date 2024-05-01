@@ -18,7 +18,7 @@ def download(folders):
     downloader(url=url, destination=folders.download / 'fbneo.zip', reporthook=show_progress)
     logger.info(f'Extracting dats from {folders.download}\n')
 
-def extract_dats(folders, full=False, light=False):
+def extract_dats(folders, *, full=False, light=False):
     with zipfile.ZipFile(folders.download / 'fbneo.zip', 'r') as zip_ref:
         filelist = [f for f in zip_ref.filelist if f.filename.startswith('FBNeo-master/dats/') and f.filename.endswith('.dat')]
         filelist_full = [f for f in filelist if '/light/' not in f.filename]
