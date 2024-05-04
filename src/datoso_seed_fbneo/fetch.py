@@ -20,7 +20,8 @@ def download(folders):
 
 def extract_dats(folders, *, full=False, light=False):
     with zipfile.ZipFile(folders.download / 'fbneo.zip', 'r') as zip_ref:
-        filelist = [f for f in zip_ref.filelist if f.filename.startswith('FBNeo-master/dats/') and f.filename.endswith('.dat')]
+        filelist = [f for f in zip_ref.filelist if f.filename.startswith('FBNeo-master/dats/')
+                    and f.filename.endswith('.dat')]
         filelist_full = [f for f in filelist if '/light/' not in f.filename]
         filelist_light = [f for f in filelist if '/light/' in f.filename]
         if full:
@@ -42,7 +43,8 @@ def backup(folders):
     with zipfile.ZipFile(folders.backup / backup_daily_name, 'w') as zip_ref:
         for root, _, files in os.walk(folders.dats):
             for file in files:
-                zip_ref.write(Path(root) / file, arcname=Path(root).relative_to(folders.dats) / file, compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
+                zip_ref.write(Path(root) / file, arcname=Path(root).relative_to(folders.dats) / file,
+                              compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
     logger.info(f'Backup created at {folders.backup}\n')
 
 def clean(folders):
