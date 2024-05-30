@@ -1,4 +1,4 @@
-from datoso.repositories.dat import XMLDatFile
+from datoso.repositories.dat_file import XMLDatFile
 
 systems = {
     'FinalBurn Neo - Arcade Games': 'arcade',
@@ -20,7 +20,7 @@ systems = {
 }
 
 class FbneoDat(XMLDatFile):
-    seed: str = 'nointro'
+    seed: str = 'fbneo'
 
     def initial_parse(self) -> list:
         """Parse the dat file."""
