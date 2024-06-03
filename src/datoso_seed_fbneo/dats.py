@@ -1,3 +1,4 @@
+"""FinalBurn Neo DAT files."""
 from datoso.repositories.dat_file import XMLDatFile
 
 systems = {
@@ -20,6 +21,8 @@ systems = {
 }
 
 class FbneoDat(XMLDatFile):
+    """FinalBurn Neo DAT file."""
+
     seed: str = 'fbneo'
 
     def initial_parse(self) -> list:

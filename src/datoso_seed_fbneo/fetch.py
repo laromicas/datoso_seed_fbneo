@@ -1,3 +1,4 @@
+"""Fetch and download DAT files."""
 import os
 import zipfile
 from datetime import datetime
@@ -13,12 +14,14 @@ from datoso_seed_fbneo import __prefix__
 
 url = 'https://github.com/libretro/FBNeo/archive/refs/heads/master.zip'
 
-def download(folders):
+def download(folders: Folders) -> None:
+    """Download DAT files."""
     logger.info(f'Downloading {url} to {folders.download}\n')
     downloader(url=url, destination=folders.download / 'fbneo.zip', reporthook=show_progress)
     logger.info(f'Extracting dats from {folders.download}\n')
 
-def extract_dats(folders, *, full=False, light=False):
+def extract_dats(folders: Folders, *, full: bool=False, light: bool=False) -> None:
+    """Extract DAT files."""
     with zipfile.ZipFile(folders.download / 'fbneo.zip', 'r') as zip_ref:
         filelist = [f for f in zip_ref.filelist if f.filename.startswith('FBNeo-master/dats/')
                     and f.filename.endswith('.dat')]
@@ -37,7 +40,8 @@ def extract_dats(folders, *, full=False, light=False):
                 zip_ref.extract(file, folders.dats / 'light')
                 file.filename = file_name
 
-def backup(folders):
+def backup(folders: Folders) -> None:
+    """Backup DAT files."""
     logger.info(f'Making backup from {folders.dats}\n')
     backup_daily_name = f'fbneo-{datetime.now(tz.tzlocal()).strftime("%Y-%m-%d")}.zip'
     with zipfile.ZipFile(folders.backup / backup_daily_name, 'w') as zip_ref:
@@ -47,13 +51,15 @@ def backup(folders):
                               compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
     logger.info(f'Backup created at {folders.backup}\n')
 
-def clean(folders):
+def clean(folders: Folders) -> None:
+    """Clean download folder."""
     logger.info(f'Cleaning {folders.download}\n')
     path = folders.download / 'fbneo.zip'
     if path.exists():
         path.unlink()
 
-def fetch():
+def fetch() -> None:
+    """Fetch and download DAT files."""
     fetch_full = config['FBNEO'].getboolean('FetchFull', True)
     fetch_light = config['FBNEO'].getboolean('FetchLight', False)
     extras = []
@@ -70,6 +76,3 @@ def fetch():
     extract_dats(folder_helper, full=fetch_full, light=fetch_light)
     backup(folder_helper)
     clean(folder_helper)
-
-if __name__ == '__main__':
-    fetch()

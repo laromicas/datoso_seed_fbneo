@@ -1,3 +1,4 @@
+"""Actions for the fbneo seed."""
 from datoso_seed_fbneo.dats import FbneoDat
 
 actions = {
@@ -35,5 +36,6 @@ actions = {
     ],
 }
 
-def get_actions():
+def get_actions() -> dict:
+    """Get the actions dictionary."""
     return actions
