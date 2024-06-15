@@ -1,4 +1,5 @@
-from datoso.repositories.dat import XMLDatFile
+"""FinalBurn Neo DAT files."""
+from datoso.repositories.dat_file import XMLDatFile
 
 systems = {
     'FinalBurn Neo - Arcade Games': 'arcade',
@@ -20,15 +21,17 @@ systems = {
 }
 
 class FbneoDat(XMLDatFile):
-    seed: str = 'nointro'
+    """FinalBurn Neo DAT file."""
+
+    seed: str = 'fbneo'
 
     def initial_parse(self) -> list:
-        """ Parse the dat file. """
+        """Parse the dat file."""
         # pylint: disable=R0801
-        self.preffix = 'Arcade'
+        self.prefix = 'Arcade'
         self.company = 'FinalBurnNeo/roms'
         self.system = systems.get(self.name, 'unknown')
         self.suffix = ''
         self.date = ''
 
-        return [self.preffix, self.company, self.system, self.suffix, self.date]
+        return [self.prefix, self.company, self.system, self.suffix, self.date]

@@ -1,3 +1,4 @@
+"""Rules for the Finalburn Neo seed."""
 from datoso_seed_fbneo.dats import FbneoDat
 
 rules = [
@@ -10,17 +11,18 @@ rules = [
             {
                 'key': 'url',
                 'operator': 'contains',
-                'value': 'neo-source.com'
+                'value': 'neo-source.com',
             },
             {
                 'key': 'author',
                 'operator': 'eq',
-                'value': 'FinalBurn Neo'
-            }
-        ]
-    }
+                'value': 'FinalBurn Neo',
+            },
+        ],
+    },
 ]
 
 
-def get_rules():
+def get_rules() -> list:
+    """Get the rules."""
     return rules
