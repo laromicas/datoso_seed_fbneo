@@ -13,6 +13,8 @@ FinalBurn Neo is an emulator for Arcade Games & Select Consoles.
 
 Datoso requires python 3.11+.
 
+For latests dats it is needed to extract them from fbneo windows executable files.
+
 Use pip (recommended to use a virtual environment):
 If you only need this plugin you can install it directly
 
@@ -20,6 +22,16 @@ If you only need this plugin you can install it directly
 pip install datoso_seed_fbneo
 
 ```
+
+
+For latest dats (only tested on windows or wsl) you can use the following command:
+``` bash
+datoso config --set FBNEO.DownloadFrom finalburnneo # this needs someway to execute windows executables, doesn't work with linux executables
+
+datoso config --set FBNEO.System win64 # or win32
+```
+
+
 
 ## Usage
 

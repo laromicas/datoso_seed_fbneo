@@ -18,6 +18,7 @@ systems = {
     'FinalBurn Neo - SuprGrafx Games': 'sgx',
     'FinalBurn Neo - TurboGrafx 16 Games': 'tg16',
     'FinalBurn Neo - ZX Spectrum Games': 'spectrum',
+    'FinalBurn Neo - FinalBurn Neo - Neo Geo Games': 'neogeo',
 }
 
 class FbneoDat(XMLDatFile):
