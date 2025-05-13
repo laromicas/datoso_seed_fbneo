@@ -14,11 +14,17 @@ from datoso_seed_fbneo import __prefix__
 
 urls = {
     'libretro': 'https://github.com/libretro/FBNeo/archive/refs/heads/master.zip',
+    # 'finalburnneo': {
+    #     'win32': 'https://github.com/finalburnneo/FBNeo/releases/download/latest/Windows.x32.zip',
+    #     'win64': 'https://github.com/finalburnneo/FBNeo/releases/download/latest/Windows.x64.zip',
+    #     'linuxsdl1.2': 'https://github.com/finalburnneo/FBNeo/releases/download/latest/Linux.SDL.1.2.zip',
+    #     'linuxsdl2': 'https://github.com/finalburnneo/FBNeo/releases/download/latest/Linux.SDL.2.zip',
+    # },
     'finalburnneo': {
-        'win32': 'https://github.com/finalburnneo/FBNeo/releases/download/latest/Windows.x32.zip',
-        'win64': 'https://github.com/finalburnneo/FBNeo/releases/download/latest/Windows.x64.zip',
-        'linuxsdl1.2': 'https://github.com/finalburnneo/FBNeo/releases/download/latest/Linux.SDL.1.2.zip',
-        'linuxsdl2': 'https://github.com/finalburnneo/FBNeo/releases/download/latest/Linux.SDL.2.zip',
+        'win32': 'https://github.com/finalburnneo/FBNeo/releases/download/latest/windows-x86_32.zip',
+        'win64': 'https://github.com/finalburnneo/FBNeo/releases/download/latest/windows-x86_64.zip',
+        'linuxsdl1.2': 'https://github.com/finalburnneo/FBNeo/releases/download/latest/linux-sdl1-x86_64.zip',
+        'linuxsdl2': 'https://github.com/finalburnneo/FBNeo/releases/download/latest/linux-sdl2-x86_64.zip',
     },
 }
 
@@ -30,14 +36,15 @@ listinfos = {
     '-listinfoggonly': 'FinalBurn Neo Game Gear Games.dat',
     '-listinfomdonly': 'FinalBurn Neo Megadrive Games.dat',
     '-listinfomsxonly': 'FinalBurn Neo MSX 1 Games.dat',
+    '-listinfoneogeoonly': 'FinalBurn Neo Neo Geo Games.dat',
     '-listinfonesonly': 'FinalBurn Neo NES Games.dat',
     '-listinfongponly': 'FinalBurn Neo Neo Geo Pocket Games.dat',
     '-listinfopceonly': 'FinalBurn Neo PC-Engine Games.dat',
     '-listinfosg1000only': 'FinalBurn Neo Sega SG-1000 Games.dat',
     '-listinfosgxonly': 'FinalBurn Neo SuprGrafx Games.dat',
     '-listinfosmsonly': 'FinalBurn Neo Master System Games.dat',
+    '-listinfosnesonly': 'FinalBurn Neo SNES Games.dat',
     '-listinfospectrumonly': 'FinalBurn Neo ZX Spectrum Games.dat',
-    '-listinfoneogeoonly': 'FinalBurn Neo Neo Geo Games.dat',
     '-listinfotg16only': 'FinalBurn Neo TurboGrafx 16 Games.dat',
 }
 
@@ -144,7 +151,7 @@ def backup(folders: Folders) -> None:
         for root, _, files in os.walk(folders.dats):
             for file in files:
                 zip_ref.write(Path(root) / file, arcname=Path(root).relative_to(folders.dats) / file,
-                              compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
+                            compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
     logger.info(f'Backup created at {folders.backup}\n')
 
 def clean(folders: Folders) -> None:

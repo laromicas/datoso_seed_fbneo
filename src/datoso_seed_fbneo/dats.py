@@ -13,6 +13,7 @@ systems = {
     'FinalBurn Neo - Neo Geo Games': 'neogeo',
     'FinalBurn Neo - Neo Geo Pocket Games': 'ngp',
     'FinalBurn Neo - NES Games': 'nes',
+    'FinalBurn Neo - SNES Games': 'snes',
     'FinalBurn Neo - PC-Engine Games': 'pce',
     'FinalBurn Neo - Sega SG-1000 Games': 'sg1000',
     'FinalBurn Neo - SuprGrafx Games': 'sgx',
