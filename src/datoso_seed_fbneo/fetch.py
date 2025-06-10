@@ -129,7 +129,7 @@ class FetchFinalBurnNeo(FBNeoFetcher):
         if light:
             command = f'{self.exec_folder / self.exec} {parameter} > "{self.folders.dats / "light" / file}"'
 
-        os.system(command)  # noqa: S605
+        os.system(f'cd {self.exec_folder} && {command}')  # noqa: S605
 
     def get_dats(self) -> None:
         """Get DAT files."""
