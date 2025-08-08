@@ -30,7 +30,7 @@ class FbneoDat(XMLDatFile):
     def initial_parse(self) -> list:
         """Parse the dat file."""
         # pylint: disable=R0801
-        self.prefix = 'Arcade'
+        self.prefix = 'Emulators'
         self.company = 'FinalBurnNeo/roms'
         self.system = systems.get(self.name, 'unknown')
         self.suffix = ''
