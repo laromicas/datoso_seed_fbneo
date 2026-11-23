@@ -8,8 +8,7 @@ from dateutil import tz
 
 from datoso.configuration import config, logger
 from datoso.configuration.folder_helper import Folders
-from datoso.helpers import show_progress
-from datoso.helpers.download import downloader
+from datoso.helpers.download import DownloadProgress, downloader
 from datoso_seed_fbneo import __prefix__
 
 urls = {
@@ -66,7 +65,8 @@ class FetchLibretro(FBNeoFetcher):
     def download(self) -> None:
         """Download DAT files."""
         logger.info(f'Downloading {self.url} to {self.folders.download}\n')
-        downloader(url=self.url, destination=self.folders.download / 'fbneo.zip', reporthook=show_progress)
+        with DownloadProgress() as progress:
+            downloader(url=self.url, destination=self.folders.download / 'fbneo.zip', progress=progress)
         logger.info(f'Extracting dats from {self.folders.download}\n')
 
     def extract_dats(self) -> None:
@@ -103,7 +103,8 @@ class FetchFinalBurnNeo(FBNeoFetcher):
     def download(self) -> None:
         """Download DAT files."""
         logger.info(f'Downloading {self.url} to {self.folders.download}\n')
-        downloader(url=self.url, destination=self.folders.download / 'fbneo.zip', reporthook=show_progress)
+        with DownloadProgress() as progress:
+            downloader(url=self.url, destination=self.folders.download / 'fbneo.zip', progress=progress)
         logger.info(f'Extracting dats from {self.folders.download}\n')
 
     def init(self) -> None:
